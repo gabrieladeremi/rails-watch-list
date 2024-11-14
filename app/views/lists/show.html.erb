@@ -1,0 +1,19 @@
+<p>Show</p>
+<br />
+
+<h3><%= @list.name %></h3>
+
+<div class="bookmarks-container">
+<% @list.bookmarks.each do |b| %>
+  <div>
+    <h2><%= b.movie.title %></h2>
+    <p><%= b.comment %></p>
+    <p><%= '⭐️' * b.movie.rating %></p>
+  </div>
+<% end %>
+</div>
+
+ <br />
+  <%= link_to lists_path do%>
+    <button type="button" class="btn btn-primary m-3">Back</button>
+  <% end %>

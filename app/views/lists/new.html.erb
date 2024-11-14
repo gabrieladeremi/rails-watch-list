@@ -1,0 +1,6 @@
+<p>Add New List</p>
+
+<%= simple_form_for(@list) do |f| %>
+  <%= f.input :name%>
+  <%= f.submit "Create", class:"btn btn-outline-primary" %>
+<% end %>
