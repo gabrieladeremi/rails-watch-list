@@ -1,6 +1,6 @@
-<p>Add New List</p>
-
-<%= simple_form_for(@list) do |f| %>
-  <%= f.input :name%>
-  <%= f.submit "Create", class:"btn btn-outline-primary" %>
-<% end %>
+<div class="container outer rounded">
+  <%= simple_form_for(@list) do |f|%>
+    <%= f.input :name, class: "input"%>
+    <%= f.submit "Create", class:"btn btn-outline-dark rounded-2 mt-3 border-3" %>
+  <% end %>
+</div>
