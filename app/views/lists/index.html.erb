@@ -1,15 +1,23 @@
-<p>List</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1 class="text-center">Save any kind of movies</h1>
+    <p class="text-center">Classic</p>
+  </div>
+</div>
 
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= list.name %></li>
-    <br />
-    <%= link_to  list_path(list, @bookmark) do%>
-      <button type="button" class="btn btn btn-outline-info m-3">View</button>
+<div class="list_container d-flex flex-column align-items-center justify-content-center my-5">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="list-text text-body fs-4">My Lists</h5>
+    <a class="btn btn-gradient" href="#">Create a movie list</a>
+  </div>
+
+  <div class="cards">
+      <% @lists.each do |list| %>
+        <%= link_to  list_path(list, @bookmark), {:style => 'text-decoration: none'} do%>
+          <div class="card-category mt-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+            <%= list.name %>
+          </div>
+        <% end %>
     <% end %>
-  <% end %>
-</ul>
-
- <%= link_to new_list_path do%>
-    <button type="button" class="btn btn-primary m-3">Add List</button>
-  <% end %>
+  </div>
+</div>
