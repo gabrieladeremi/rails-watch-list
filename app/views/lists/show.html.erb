@@ -1,12 +1,28 @@
+<!--- Banner --->
+<div class="count-btn">
+  <button type="button" class="btn btn-warning">
+    <% if @list.bookmarks.length > 1 %>
+      <%= @list.bookmarks.count %> movies
+    <% else %>
+      <%= @list.bookmarks.count %> movie
+    <% end %>
+
+  </button>
+</div>
+
+<!--- Banner --->
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container">
     <h1 class="text-center"><%= @list.name %></h1>
   </div>
 </div>
 
+<!--- Bookmarks --->
 <div class="list_container d-flex flex-column align-items-center justify-content-center my-5">
   <div class="d-flex w-100 justify-content-end">
-    <a class="btn btn-gradient" href="#">add a movie</a>
+    <button type="button" class="btn btn-gradient" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Bookmark a Movie
+    </button>
   </div>
 
   <div class="cards">
@@ -21,11 +37,33 @@
         <p class="card-text px-1"><%= bookmark.movie.overview %></p>
         <div class="d-flex justify-content-between px-2">
           <p><%= bookmark.movie.title %></p>
-          <a href="#" class="link-danger text-decoration-none fw-bold">New list</a>
+          <a href="#" class="link-danger text-decoration-none fw-bold">delete</a>
         </div>
       </div>
     <% end %>
   </div>
 </div>
 
-  <%# <hr class="border-bottom border-1 border-dark"> %>
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Boookmark movie</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="bookmarks-container">
+          <%= simple_form_for([@list, @bookmark]) do |f| %>
+            <%= f.input :comment %>
+            <%= f.association :movie %>
+            <%= f.submit "Add", class:"btn btn-outline-dark rounded-2 mt-3 border-3"%>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
